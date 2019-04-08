@@ -6,12 +6,12 @@ In the world of to,  tic tac toe championships are played best out of 1000.
 ## How
 I will implement two player classes
 - AI player
-###AI player
+### AI player
 Will try and learn from each championship
-###Random player
+### Random player
 Will play randomly each move
 
-#AI
+# AI
 ### Initialization
 - can be randomly initialized
 - can be initialized with a seed 
