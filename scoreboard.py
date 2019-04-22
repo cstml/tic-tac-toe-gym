@@ -25,5 +25,18 @@ class ScoreBoard(object):
         self.newGame()
         return
 
+    def Draw(self):
+        self.draws += 1
+        self.newGame()
+
     def newGame(self):
         self.game += 1
+
+    def printBoard(self):
+        print ("=" * 20)
+        print ("Scoreboard")
+        print ("X : " + str(self.xWins))
+        print ("0 : " + str(self.yWins))
+        print ("Draw : " + str(self.draws))
+        print ("=" * 20)
+

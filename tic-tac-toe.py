@@ -3,10 +3,11 @@ The classic tic tac toe game
 """
 import random
 from botRandom import playerRandom
+from scoreboard import ScoreBoard
 
 class TicTacToe(object):
 
-    def __init__(self):
+    def __init__(self,championship):
         """ 
         Initialise the board
         """
@@ -15,7 +16,6 @@ class TicTacToe(object):
         self.oCharacter = "O"
         self.board = [self.neutralCharacter for _ in range(10)]
 
-        self.boardAvailable = [self.neutralCharacter for _ in range(10)]
         self.player1 = playerRandom(self,self.xCharacter)
         self.player2 = playerRandom(self,self.oCharacter)
         self.player = {"x" : self.player1,"y" : self.player2}
@@ -23,8 +23,10 @@ class TicTacToe(object):
         self.winsPlayer1 = 0
         self.winsPlayer2 = 0
         self.numberOfGamesPlayed = 1
-        self.numberOfGamesToPlay = 2
+        self.numberOfGamesToPlay = 100
         self.numberOfMoves = 0
+
+        self.scoreBoard = ScoreBoard(championship)
 
     def DisplayBoard(self):
         """
@@ -40,6 +42,7 @@ class TicTacToe(object):
 
     def Win(self):
         board = self.board
+
         if ( board[1]==board[2]==board[3]!=self.neutralCharacter ):
             return True
         elif (board[4]==board[5]==board[6]!=self.neutralCharacter):
@@ -67,37 +70,45 @@ class TicTacToe(object):
         """
         if ( winningPlayer == 1):
             self.player1.Win()
+            self.scoreBoard.winX()
             self.player2.Lose()
 
         if ( winningPlayer == 2):
             self.player1.Lose()
             self.player2.Win()
+            self.scoreBoard.winY()
 
-        if ( winningPlayer == 0):
+        if ( winningPlayer == 3):
             self.player1.Draw()
             self.player2.Draw()
+            self.scoreBoard.Draw()
 
     def Draw(self):
         """
         Method defining what happens if the game ends in a draw 
         """
-        if ( self.numberOfMoves == 9 ):
+        if ( self.numberOfMoves == 8 ):
             return True
         else:
             return False
 
     def EraseBoard(self):
-        self.DisplayBoard()
         self.board = [self.neutralCharacter for _ in range(10)]
 
     def Championship(self):
+        print ("="*10)
         print ("Start of a new Championship set")
+        print ("="*10)
         while (self.numberOfGamesPlayed <= self.numberOfGamesToPlay):
             self.EraseBoard()
-            print ("-Championship number " + str(self.numberOfGamesPlayed))
+            self.scoreBoard.newGame()
+            print ("\n")
+            print ("-" * 20)
+            print ("Championship number: " + str(self.numberOfGamesPlayed))
             self.PlayGame()
             self.numberOfGamesPlayed += 1
-            self.EraseBoard()
+            print ("\n")
+        self.scoreBoard.printBoard()
 
     def AnalyzeBoard(self,playerTurn):
         if ( playerTurn == self.player1 ):
@@ -107,6 +118,7 @@ class TicTacToe(object):
                 return 3
             else:
                 return 0
+
         elif (playerTurn == self.player2):
             if (self.Win()):
                 return 2
@@ -126,6 +138,10 @@ class TicTacToe(object):
 
             playerTurn.Move() # calls player to make a move
 
+            # Display board
+            self.DisplayBoard()
+
+            # Analyze board
             result = self.AnalyzeBoard(playerTurn)
             if (result == 1):
                 self.PlayerWin(1)
@@ -134,20 +150,19 @@ class TicTacToe(object):
                 self.PlayerWin(2)
                 return
             elif (result == 3):
-                self.PlayerWin(0)
+                self.PlayerWin(3)
                 return
 
-            #nextplayer()
+            # next player
             if (playerTurn == self.player1):
                 playerTurn = self.player2
             elif (playerTurn == self.player2):
                 playerTurn = self.player1
             self.numberOfMoves += 1
-            self.DisplayBoard()
 
 
 if __name__ == "__main__":
-    game = TicTacToe()
+    game = TicTacToe(1)
     game.DisplayBoard()
     game.Championship()
 

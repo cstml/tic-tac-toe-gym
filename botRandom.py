@@ -53,9 +53,11 @@ class playerRandom(object):
 
     def Occupied(self,position):
         if (self.game.board[position] != self.neutralCharacter):
+            """ Debug
             print (position)
             print (self.game.board)
             print ("DUD")
+            """
             return True
         else:
             return False
