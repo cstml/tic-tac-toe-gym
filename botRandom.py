@@ -27,7 +27,20 @@ class playerRandom(object):
         """
         Method that the bot does when it loses
         """
-        print("I Lost")
+        print ( 10*"*")
+        print ("Player " + self.character + " says:")
+        print ("I Lost")
+        print ( 10*"*")
+
+    def Draw(self):
+        """
+        Method that the bot does when it draws
+        """
+        print ( 10*"*")
+        print ("Player " + self.character + " says:")
+        print ("It's a Draw")
+        print ( 10*"*")
+
 
     def nextMoveDecision(self):
         """

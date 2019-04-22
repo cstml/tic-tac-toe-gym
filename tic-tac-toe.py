@@ -123,19 +123,19 @@ class TicTacToe(object):
         while (self.numberOfMoves < 9):
             # Print number of current move
             print ("--Move " +str(self.numberOfMoves))
-            result = self.AnalyzeBoard(playerTurn)
-            if (result == 1):
-                PlayerWin(1)
-                return
-            elif (result == 2):
-                PlayerWin(2)
-                return
-            elif (result == 3):
-                PlayerWin(0)
-                return
 
             playerTurn.Move() # calls player to make a move
 
+            result = self.AnalyzeBoard(playerTurn)
+            if (result == 1):
+                self.PlayerWin(1)
+                return
+            elif (result == 2):
+                self.PlayerWin(2)
+                return
+            elif (result == 3):
+                self.PlayerWin(0)
+                return
 
             #nextplayer()
             if (playerTurn == self.player1):
@@ -145,16 +145,6 @@ class TicTacToe(object):
             self.numberOfMoves += 1
             self.DisplayBoard()
 
-        result = self.AnalyzeBoard(playerTurn)
-        if (result == 1):
-            self.PlayerWin(1)
-            return
-        elif (result == 2):
-            self.PlayerWin(2)
-            return
-        elif (result == 3):
-            self.PlayerWin(0)
-            return
 
 if __name__ == "__main__":
     game = TicTacToe()
