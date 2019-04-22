@@ -12,6 +12,7 @@ class playerRandom(object):
         """
         self.game = _gameBeingPlayed
         self.character = _charcter
+        self.neutralCharacter = self.game.neutralCharacter
         
     def Win(self):
         """
@@ -38,7 +39,9 @@ class playerRandom(object):
         return b
 
     def Occupied(self,position):
-        if (self.game.board[position] != self.game.neutralCharacter):
+        if (self.game.board[position] != self.neutralCharacter):
+            print (position)
+            print (self.game.board)
             print ("DUD")
             return True
         else:

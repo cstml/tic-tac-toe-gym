@@ -14,6 +14,7 @@ class TicTacToe(object):
         self.xCharacter = "X"
         self.oCharacter = "O"
         self.board = [self.neutralCharacter for _ in range(10)]
+
         self.boardAvailable = [self.neutralCharacter for _ in range(10)]
         self.player1 = playerRandom(self,self.xCharacter)
         self.player2 = playerRandom(self,self.oCharacter)
@@ -37,49 +38,50 @@ class TicTacToe(object):
         print (thirdLine)
         return
 
-    def Win(self,playerTurn):
+    def Win(self):
         board = self.board
-        if ( board[1] == board[2] == board[3] != self.neutralCharacter ):
-            playerTurn.Win()
+        if ( board[1]==board[2]==board[3]!=self.neutralCharacter ):
             return True
         elif (board[4]==board[5]==board[6]!=self.neutralCharacter):
-            self.ScoreBoardWinItterate(playerTurn)
-            playerTurn.Win()
             return True
         elif (board[7]==board[8]==board[9]!=self.neutralCharacter):
-            self.ScoreBoardWinItterate(playerTurn)
-            playerTurn.Win()
             return True
+
         elif (board[1]==board[4]==board[7]!=self.neutralCharacter):
-            self.ScoreBoardWinItterate(playerTurn)
-            playerTurn.Win()
             return True
         elif (board[2]==board[6]==board[8]!=self.neutralCharacter):
-            self.ScoreBoardWinItterate(playerTurn)
-            playerTurn.Win()
             return True
         elif (board[3]==board[6]==board[9]!=self.neutralCharacter):
-            self.ScoreBoardWinItterate(playerTurn)
-            playerTurn.Win()
             return True
+
+        elif (board[1]==board[5]==board[9]!=self.neutralCharacter):
+            return True
+        elif (board[3]==board[5]==board[7]!=self.neutralCharacter):
+            return True
+
         return False
 
-    def PlayerWin (self,playerTurn):
+    def PlayerWin (self,winningPlayer):
         """
         Method that defines what happens when a player wins
         """
-        if ( playerTurn.character == self.xCharacter )
-            self.ScoreBoardWinItterate(playerTurn)
+        if ( winningPlayer == 1):
+            self.player1.Win()
+            self.player2.Lose()
 
-        if ( playerTurn.character == self.yCharacter )
-            self.ScoreBoardWinItterate(playerTurn)
+        if ( winningPlayer == 2):
+            self.player1.Lose()
+            self.player2.Win()
+
+        if ( winningPlayer == 0):
+            self.player1.Draw()
+            self.player2.Draw()
 
     def Draw(self):
         """
         Method defining what happens if the game ends in a draw 
         """
-        if ( self.numberOfMoves == 10 ):
-            print ("Draw")
+        if ( self.numberOfMoves == 9 ):
             return True
         else:
             return False
@@ -91,25 +93,26 @@ class TicTacToe(object):
     def Championship(self):
         print ("Start of a new Championship set")
         while (self.numberOfGamesPlayed <= self.numberOfGamesToPlay):
+            self.EraseBoard()
             print ("-Championship number " + str(self.numberOfGamesPlayed))
             self.PlayGame()
             self.numberOfGamesPlayed += 1
             self.EraseBoard()
 
     def AnalyzeBoard(self,playerTurn):
-        if ( playerTurn == 1 ):
+        if ( playerTurn == self.player1 ):
             if (self.Win()):
                 return 1
             elif (self.Draw()):
                 return 3
-            elif:
+            else:
                 return 0
-        elif (playerTurn == 2):
+        elif (playerTurn == self.player2):
             if (self.Win()):
                 return 2
             elif (self.Draw()):
                 return 3
-            elif:
+            else:
                 return 0
 
     def PlayGame(self):
@@ -117,35 +120,41 @@ class TicTacToe(object):
         self.EraseBoard()
         playerTurn = self.player1
 
-        while (self.numberOfMoves < 10):
+        while (self.numberOfMoves < 9):
+            # Print number of current move
             print ("--Move " +str(self.numberOfMoves))
-            playerTurn.move()
-                # calls player to make a move
-            result = AnalyzeBoard()
+            result = self.AnalyzeBoard(playerTurn)
             if (result == 1):
-                player1wins()
+                PlayerWin(1)
+                return
             elif (result == 2):
-                player2wins()
+                PlayerWin(2)
+                return
             elif (result == 3):
-                itsadraw()
+                PlayerWin(0)
+                return
+
+            playerTurn.Move() # calls player to make a move
+
 
             #nextplayer()
-            if playerTurn == self.player1):
+            if (playerTurn == self.player1):
                 playerTurn = self.player2
-                # next player
-                # moves++
-            self.player1.Move()
+            elif (playerTurn == self.player2):
+                playerTurn = self.player1
+            self.numberOfMoves += 1
             self.DisplayBoard()
-            self.numberOfMoves+=1
-            if (self.AnalyzeBoard(self.player1)):
-                return
 
-            print ("--Move " +str(self.numberOfMoves))
-            self.player2.Move()
-            self.DisplayBoard()
-            self.numberOfMoves+=1
-            if (self.AnalyzeBoard(self.player2)):
-                return
+        result = self.AnalyzeBoard(playerTurn)
+        if (result == 1):
+            self.PlayerWin(1)
+            return
+        elif (result == 2):
+            self.PlayerWin(2)
+            return
+        elif (result == 3):
+            self.PlayerWin(0)
+            return
 
 if __name__ == "__main__":
     game = TicTacToe()

@@ -1,0 +1,90 @@
+	Session.vim	/^inoremap  $/;"	m
+		Session.vim	/^inoremap <expr> 	 pumvisible() ? "\\" : "\\	"$/;"	m
+	Session.vim	/^inoremap <buffer> <silent>   =jedi#smart_auto_mappings()$/;"	m
+	Session.vim	/^nnoremap   za$/;"	m
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+.	Session.vim	/^inoremap <buffer> <silent> . .=jedi#complete_string(1)$/;"	m
+0	Session.vim	/^normal! 0$/;"	m
+034|	Session.vim	/^normal! 034|$/;"	m
+<BS>	Session.vim	/^vmap <BS> "-d$/;"	m
+<C-Space>	Session.vim	/^inoremap <buffer> <expr> <C-Space> jedi#complete_string(0)$/;"	m
+<Down>	Session.vim	/^inoremap <expr> <Down> pumvisible() ? "\\" : "\\<Down>"$/;"	m
+<NL>	Session.vim	/^imap <NL> <Plug>IMAP_JumpForward$/;"	m
+<NL>	Session.vim	/^nmap <NL> <Plug>IMAP_JumpForward$/;"	m
+<NL>	Session.vim	/^vmap <NL> <Plug>IMAP_JumpForward$/;"	m
+<Nul>	Session.vim	/^imap <Nul> <C-Space>$/;"	m
+<Nul>	Session.vim	/^imap <buffer> <Nul> <C-Space>$/;"	m
+<Plug>IMAP_DeleteAndJumpBack	Session.vim	/^vnoremap <silent> <Plug>IMAP_DeleteAndJumpBack "_<Del>:call IMAP_Jumpfunc('b', 0)$/;"	m
+<Plug>IMAP_DeleteAndJumpForward	Session.vim	/^vnoremap <silent> <Plug>IMAP_DeleteAndJumpForward "_<Del>:call IMAP_Jumpfunc('', 0)$/;"	m
+<Plug>IMAP_JumpBack	Session.vim	/^inoremap <silent> <Plug>IMAP_JumpBack :call IMAP_Jumpfunc('b', 0)$/;"	m
+<Plug>IMAP_JumpBack	Session.vim	/^nnoremap <silent> <Plug>IMAP_JumpBack :call IMAP_Jumpfunc('b', 0)$/;"	m
+<Plug>IMAP_JumpBack	Session.vim	/^vnoremap <silent> <Plug>IMAP_JumpBack `<:call IMAP_Jumpfunc('b', 0)$/;"	m
+<Plug>IMAP_JumpForward	Session.vim	/^inoremap <silent> <Plug>IMAP_JumpForward :call IMAP_Jumpfunc('', 0)$/;"	m
+<Plug>IMAP_JumpForward	Session.vim	/^nnoremap <silent> <Plug>IMAP_JumpForward :call IMAP_Jumpfunc('', 0)$/;"	m
+<Plug>IMAP_JumpForward	Session.vim	/^vnoremap <silent> <Plug>IMAP_JumpForward :call IMAP_Jumpfunc('', 0)$/;"	m
+<Plug>NetrwBrowseX	Session.vim	/^nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())$/;"	m
+<Plug>NetrwBrowseXVis	Session.vim	/^vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()$/;"	m
+<S-Tab>	Session.vim	/^inoremap <expr> <S-Tab> pumvisible() ? "\\" : "\\<S-Tab>"$/;"	m
+<Up>	Session.vim	/^inoremap <expr> <Up> pumvisible() ? "\\" : "\\<Up>"$/;"	m
+AnalyzeBoard	tic-tac-toe.py	/^    def AnalyzeBoard(self,playerTurn):$/;"	m	class:TicTacToe
+Championship	tic-tac-toe.py	/^    def Championship(self):$/;"	m	class:TicTacToe
+DisplayBoard	tic-tac-toe.py	/^    def DisplayBoard(self):$/;"	m	class:TicTacToe
+Draw	tic-tac-toe.py	/^    def Draw(self):$/;"	m	class:TicTacToe
+EraseBoard	tic-tac-toe.py	/^    def EraseBoard(self):$/;"	m	class:TicTacToe
+K	Session.vim	/^nnoremap <buffer> <silent> K :call jedi#show_documentation()$/;"	m
+Lose	botRandom.py	/^    def Lose(self):$/;"	m	class:playerRandom
+Move	botRandom.py	/^    def Move(self):$/;"	m	class:playerRandom
+Occupied	botRandom.py	/^    def Occupied(self,position):$/;"	m	class:playerRandom
+PlayGame	tic-tac-toe.py	/^    def PlayGame(self):$/;"	m	class:TicTacToe
+PlayerWin	tic-tac-toe.py	/^    def PlayerWin (self,playerTurn):$/;"	m	class:TicTacToe
+ScoreBoard	scoreboard.py	/^class ScoreBoard(object):$/;"	c
+SessionLoad	Session.vim	/^let SessionLoad = 1$/;"	v
+TicTacToe	tic-tac-toe.py	/^class TicTacToe(object):$/;"	c
+Tick	botRandom.py	/^    def Tick(self, position):$/;"	m	class:playerRandom
+Win	botRandom.py	/^    def Win(self):$/;"	m	class:playerRandom
+Win	tic-tac-toe.py	/^    def Win(self,playerTurn):$/;"	m	class:TicTacToe
+\	Session.vim	/^nnoremap \\  :nohlsearch$/;"	m
+\d	Session.vim	/^nnoremap <buffer> \\d :call jedi#goto()$/;"	m
+\d	Session.vim	/^nnoremap \\d :YcmShowDetailedDiagnostic$/;"	m
+\g	Session.vim	/^nnoremap <buffer> \\g :call jedi#goto_assignments()$/;"	m
+\ig	Session.vim	/^nmap <silent> \\ig <Plug>IndentGuidesToggle$/;"	m
+\n	Session.vim	/^nnoremap <buffer> \\n :call jedi#usages()$/;"	m
+\r	Session.vim	/^nnoremap <buffer> \\r :call jedi#rename()$/;"	m
+\r	Session.vim	/^vnoremap <buffer> \\r :call jedi#rename_visual()$/;"	m
+__init__	botRandom.py	/^    def __init__(self, _gameBeingPlayed, _charcter):$/;"	m	class:playerRandom
+__init__	inteligentBot.py	/^    def __init__(self):$/;"	m	class:inteligentBot
+__init__	inteligentBot.py	/^    def __init__(self):$/;"	m	class:neuroNetwork
+__init__	scoreboard.py	/^    def __init__(self,championship):$/;"	m	class:ScoreBoard
+__init__	tic-tac-toe.py	/^    def __init__(self):$/;"	m	class:TicTacToe
+__sigmoid	inteligentBot.py	/^    def __sigmoid(self, x):$/;"	m	class:neuroNetwork	file:
+__sigmoid_derivative	inteligentBot.py	/^    def __sigmoid_derivative(self, x):$/;"	m	class:neuroNetwork	file:
+game	tic-tac-toe.py	/^    game = TicTacToe()$/;"	v	class:TicTacToe
+gx	Session.vim	/^nmap gx <Plug>NetrwBrowseX$/;"	m
+gx	Session.vim	/^vmap gx <Plug>NetrwBrowseXVis$/;"	m
+inteligentBot	inteligentBot.py	/^class inteligentBot(Object):$/;"	c
+neuroNetwork	inteligentBot.py	/^class neuroNetwork(Object):$/;"	c
+neuron	inteligentBot.py	/^    def neuron:$/;"	m	class:inteligentBot
+newGame	scoreboard.py	/^    def newGame(self):$/;"	m	class:ScoreBoard
+nextMoveDecision	botRandom.py	/^    def nextMoveDecision(self):$/;"	m	class:playerRandom
+player	botRandom.py	/^    player = playerRandom()$/;"	v
+playerRandom	botRandom.py	/^class playerRandom(object):$/;"	c
+playerRandom	scoreboard.py	/^from botRandom import playerRandom$/;"	i
+playerRandom	tic-tac-toe.py	/^from botRandom import playerRandom$/;"	i
+random	botRandom.py	/^import random$/;"	i
+random	inteligentBot.py	/^import random$/;"	i
+random	tic-tac-toe.py	/^import random$/;"	i
+s:cpo_save	Session.vim	/^let s:cpo_save=&cpo$/;"	v
+s:l	Session.vim	/^let s:l = 10 - ((9 * winheight(0) + 29) \/ 59)$/;"	v
+s:l	Session.vim	/^let s:l = 20 - ((15 * winheight(0) + 14) \/ 29)$/;"	v
+s:l	Session.vim	/^let s:l = 33 - ((15 * winheight(0) + 14) \/ 29)$/;"	v
+s:so_save	Session.vim	/^let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0$/;"	v
+s:sx	Session.vim	/^let s:sx = expand("<sfile>:p:r")."x.vim"$/;"	v
+s:wipebuf	Session.vim	/^  let s:wipebuf = bufnr('%')$/;"	v
+winX	scoreboard.py	/^    def winX(self):$/;"	m	class:ScoreBoard
+winY	scoreboard.py	/^    def winY(self):$/;"	m	class:ScoreBoard
+zt	Session.vim	/^normal! zt$/;"	m
