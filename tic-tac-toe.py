@@ -93,6 +93,9 @@ class TicTacToe(object):
             return False
 
     def EraseBoard(self):
+        """
+        Initialise the board
+        """
         self.board = [self.neutralCharacter for _ in range(10)]
 
     def Championship(self):
