@@ -15,6 +15,7 @@ Will play randomly each move
 ### Initialization
 - can be randomly initialized
 - can be initialized with a seed 
+
 ### Learning
 - can learn from playing itself, random player,or human player
 - There are different instances of players
