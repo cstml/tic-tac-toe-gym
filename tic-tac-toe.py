@@ -3,6 +3,7 @@ The classic tic tac toe game
 """
 import random
 from botRandom import playerRandom
+#from botSmart import playerSmart
 from scoreboard import ScoreBoard
 
 class TicTacToe(object):
