@@ -10,6 +10,7 @@ class playerRandom(object):
         """
         Initialise each bot with their character and the game they are part of
         """
+        random.seed(1)
         self.game = _gameBeingPlayed
         self.character = _charcter
         self.neutralCharacter = self.game.neutralCharacter

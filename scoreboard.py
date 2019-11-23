@@ -4,7 +4,6 @@ Which keeps track of which player won which game and
 championship
 """
 
-from botRandom import playerRandom
 
 class ScoreBoard(object):
 
@@ -35,8 +34,8 @@ class ScoreBoard(object):
     def printBoard(self):
         print ("=" * 20)
         print ("Scoreboard")
-        print ("X : " + str(self.xWins))
-        print ("0 : " + str(self.yWins))
+        print ("X : " + str(self.xWins) + " dumb")
+        print ("0 : " + str(self.yWins) + " inteligent")
         print ("Draw : " + str(self.draws))
         print ("=" * 20)
 

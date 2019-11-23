@@ -16,7 +16,7 @@ class neuroNetwork():
         # We assign random weights to a 9 x 1 matrix, with values in the range -1 to 1
         # and mean 0.
         self.input   = random.rand(10)*2
-        self.synaptic_weights = random.rand(9, 9,9)*2-1 
+        self.synaptic_weights = random.rand(10,10)*2-1 
         self.synaptic_weights = self.__sigmoid(self.synaptic_weights)
         self.synaptic_output  = random.rand(10)*2-1 
 
@@ -29,9 +29,9 @@ class neuroNetwork():
     def __sigmoid_derivative(self, x):
         return x * (1 - x)
 
-    def __think(self,inputs):
-        inputs = inputs.astype(float)
-        output = self.sigmoid(np.dot(inputs, self.synaptic_weights))
+    def __think(self):
+        self.input = self.input.astype(float)
+        output = self.__sigmoid(np.dot(self.input, self.synaptic_weights))
         return output
 
     def __train (self, training_inputs, training_outputs, number_of_iterations):
@@ -54,6 +54,11 @@ class neuroNetwork():
         print ()
         print (self.__sigmoid_derivative(input))
 
+    def read (self):
+        self.synaptic_output=self.__think()
+        print ("the output looks like this")
+        print (self.synaptic_output)
+
 class inteligentBot():
 
     def __init__(self, _gameBeingPlayed, _character):
@@ -63,32 +68,50 @@ class inteligentBot():
         self.neutralCharacter = self.game.neutralCharacter
 
     def Read(self):
+        board = self.game.board
+        inputBoard = self.botNetwork.input
         for a in range(1,10):
-            if (self.game.board[a] == self.game.neutralCharacter):
+            if (self.game.board[a] is self.game.neutralCharacter):
                 self.botNetwork.input[a] = int(0)
             elif (self.game.board[a] == self.character):
                 self.botNetwork.input[a] = int(1)
-            elif (self.game.board[a] == self.game.neutralCharacter):
-                self.neuroNetwork.input[a] = int(-1)
+            else:
+                self.botNetwork.input[a] = int(-1)
+            """
             else:
                 print("Nope")
             print (self.botNetwork.input[a])
+            """
+            print ("at this "+ str(a) +" position there is :"+ board[a]+" and within the input we have "+ str(inputBoard[a]))
+
 
     def TakeDecision(self):
         max = -1
         nextMove = 0
+        self.botNetwork.read()
         for a in range (10):
-            if self.botNetwork.synaptic_output[a] > max:
-                nextMove = a 
-                max = self.botNetwork.synaptic_output[a]
+            if ((self.botNetwork.synaptic_output[a] > max) and (self.botNetwork.input[a] == 0 )):
+                    nextMove = a 
+                    max = self.botNetwork.synaptic_output[a]
+        return nextMove
 
     def Move(self):
         self.Read()
-        self.TakeDecision()
+        print (self.botNetwork.synaptic_output)
+        self.game.board[self.TakeDecision()]=self.character
         return 0
 
     def readTable():
         return 0
+
+    def Win(self):
+        print("Inteligent won")
+
+    def Lose(self):
+        print("Inteligent lost")
+
+    def Draw(self):
+        print("It's a draw!")
 
 
 if __name__ == "__main__":
