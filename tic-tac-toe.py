@@ -3,7 +3,7 @@ The classic tic tac toe game
 """
 import random
 from botRandom import playerRandom
-#from botSmart import playerSmart
+from inteligentBot import inteligentBot as playerInteligent
 from scoreboard import ScoreBoard
 
 class TicTacToe(object):
@@ -18,7 +18,7 @@ class TicTacToe(object):
         self.board = [self.neutralCharacter for _ in range(10)]
 
         self.player1 = playerRandom(self,self.xCharacter)
-        self.player2 = playerRandom(self,self.oCharacter)
+        self.player2 = playerInteligent(self,self.oCharacter)
         self.player = {"x" : self.player1,"y" : self.player2}
 
         self.winsPlayer1 = 0

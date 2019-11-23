@@ -12,11 +12,13 @@ import numpy as np
 class neuroNetwork():
     def __init__(self):
         random.seed(1)
-        # We model a single neuron, with 3 input connections and 1 output connection.
-        # We assign random weights to a 3 x 1 matrix, with values in the range -1 to 1
+        # We model a single neuron, with 9 input connections and 9 output connection.
+        # We assign random weights to a 9 x 1 matrix, with values in the range -1 to 1
         # and mean 0.
-        self.synaptic_weights = 2 * random.random((3, 1)) - 1 
-        print (self.synaptic_weights)
+        self.input   = random.rand(10)*2
+        self.synaptic_weights = random.rand(9, 9,9)*2-1 
+        self.synaptic_weights = self.__sigmoid(self.synaptic_weights)
+        self.synaptic_output  = random.rand(10)*2-1 
 
     def __sigmoid(self, x):
         """
@@ -43,6 +45,7 @@ class neuroNetwork():
         """
         A function I use to test if the class is working
         """
+        print (self.synaptic_weights)
         print (self.__sigmoid(self.synaptic_weights))
         print ()
         print (self.__sigmoid_derivative(self.synaptic_weights))
@@ -53,12 +56,41 @@ class neuroNetwork():
 
 class inteligentBot():
 
-    def __init__(self):
+    def __init__(self, _gameBeingPlayed, _character):
+        self.botNetwork = neuroNetwork()
+        self.game = _gameBeingPlayed
+        self.character = _character
+        self.neutralCharacter = self.game.neutralCharacter
+
+    def Read(self):
+        for a in range(1,10):
+            if (self.game.board[a] == self.game.neutralCharacter):
+                self.botNetwork.input[a] = int(0)
+            elif (self.game.board[a] == self.character):
+                self.botNetwork.input[a] = int(1)
+            elif (self.game.board[a] == self.game.neutralCharacter):
+                self.neuroNetwork.input[a] = int(-1)
+            else:
+                print("Nope")
+            print (self.botNetwork.input[a])
+
+    def TakeDecision(self):
+        max = -1
+        nextMove = 0
+        for a in range (10):
+            if self.botNetwork.synaptic_output[a] > max:
+                nextMove = a 
+                max = self.botNetwork.synaptic_output[a]
+
+    def Move(self):
+        self.Read()
+        self.TakeDecision()
         return 0
 
-    def neuron():
+    def readTable():
         return 0
+
 
 if __name__ == "__main__":
     test = neuroNetwork()
-    test.debug()
+    test.debug(1)
