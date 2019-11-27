@@ -1,4 +1,6 @@
 *.vim
 *.pyc
+*.pyc
 *.swp
-env
+*env
+*tags

@@ -7,12 +7,13 @@ championship
 
 class ScoreBoard(object):
 
-    def __init__(self,championship):
-        self.game = 0
+    def __init__(self,game,championship):
+        self.gamenumber = 0
         self.championshipNumber = championship
         self.xWins = 0
         self.yWins = 0 
         self.draws = 0
+        self.game = game
 
     def winX(self):
         self.xWins += 1
@@ -29,13 +30,13 @@ class ScoreBoard(object):
         self.newGame()
 
     def newGame(self):
-        self.game += 1
+        self.gamenumber += 1
 
     def printBoard(self):
         print ("=" * 20)
         print ("Scoreboard")
-        print ("X : " + str(self.xWins) + " dumb")
-        print ("0 : " + str(self.yWins) + " inteligent")
+        print ("X : " + str(self.xWins) +" "+ self.game.player1.name)
+        print ("0 : " + str(self.yWins) +" "+ self.game.player2.name)
         print ("Draw : " + str(self.draws))
         print ("=" * 20)
 
