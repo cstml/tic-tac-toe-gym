@@ -3,6 +3,10 @@ Remember the good old days when in college you use to be bored and started playi
 
 In the world of to,  tic tac toe championships are played best out of 1000.
 
+## Why?
+I've developed this to improve my understanding of AI opponents and improve my knowledge
+of Python.
+
 ## How
 I will implement two player classes
 - AI player
